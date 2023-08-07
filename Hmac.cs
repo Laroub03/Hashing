@@ -4,11 +4,13 @@ using System.Text;
 
 namespace CryptographyInDotNet
 {
+    // Interface for HMAC algorithm
     public interface IHmacAlgorithm
     {
         byte[] ComputeHmac(byte[] toBeHashed, byte[] key);
     }
 
+    // Implementation of HMAC algorithm using SHA-256
     public class HmacSHA256Algorithm : IHmacAlgorithm
     {
         public byte[] ComputeHmac(byte[] toBeHashed, byte[] key)
@@ -18,6 +20,7 @@ namespace CryptographyInDotNet
         }
     }
 
+    // Implementation of HMAC algorithm using SHA-1
     public class HmacSHA1Algorithm : IHmacAlgorithm
     {
         public byte[] ComputeHmac(byte[] toBeHashed, byte[] key)
@@ -27,6 +30,7 @@ namespace CryptographyInDotNet
         }
     }
 
+    // Implementation of HMAC algorithm using SHA-512
     public class HmacSHA512Algorithm : IHmacAlgorithm
     {
         public byte[] ComputeHmac(byte[] toBeHashed, byte[] key)
@@ -36,6 +40,7 @@ namespace CryptographyInDotNet
         }
     }
 
+    // Implementation of HMAC algorithm using MD5
     public class HmacMD5Algorithm : IHmacAlgorithm
     {
         public byte[] ComputeHmac(byte[] toBeHashed, byte[] key)
@@ -45,6 +50,7 @@ namespace CryptographyInDotNet
         }
     }
 
+    // Class for calculating HMAC using a specified algorithm
     public class HmacCalculator
     {
         private readonly IHmacAlgorithm _algorithm;
@@ -59,6 +65,7 @@ namespace CryptographyInDotNet
             return _algorithm.ComputeHmac(toBeHashed, key);
         }
 
+        // Generate a random key for HMAC calculation
         public static byte[] GenerateKey()
         {
             var randomNumberGenerator = RandomNumberGenerator.Create();
